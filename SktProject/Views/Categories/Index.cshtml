@@ -1,0 +1,50 @@
+﻿
+<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.7/angular.min.js"></script>
+<script src="~/Scripts/Module.js"></script>
+<script src="~/Scripts/Controller.js"></script>
+
+<script src="~/Scripts/Service.js"></script>
+
+<div ng-app="myAdmin" ng-controller="myCatCtrl" ng-init="getAllCategories()">
+
+    <div ng-show="addCat" style="padding-top:100px">
+        <table>
+            <tr>
+                <th>CategoryName</th>
+                <th>
+                    <input type="text" ng-model="categoryName" />
+                </th>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <th>
+                    <input type="text" ng-model="catDescription" />
+                </th>
+            </tr>
+
+            <tr>
+                <td colspan="2"><input type="button" ng-click="addCategory()" class="btn btn-success" value="Kaydet" /></td>
+
+            </tr>
+
+        </table>
+    </div>
+
+    <table class="table">
+        <tr>
+            <th>CategoryName</th>
+            <th>Description</th>
+        </tr>
+        <tr ng-repeat="x in category">
+            <td ng-bind="x.CategoryName"></td>
+            <td ng-bind="x.Description"></td>
+            <td>
+                <span ng-click="editEmployee(x)" class="btn btn-default">Edit</span>
+                <span ng-click="DeleteE(x)" class="btn btn-default">Delete</span>
+            </td>
+        </tr>
+    </table>
+
+    <input type="button" class="btn btn-success" value="Category Add" ng-click="Divac()" />
+
+</div>
