@@ -11,8 +11,9 @@ namespace SktProject.Models
     {
         public int ProductId { get; set; }
 
-
         public int CategoryId { get; set; }
+        public  Category Category { get; set; }
+
         public string Title { get; set; }
         public decimal Price { get; set; }
         public string ProductUrl { get; set; }
@@ -23,7 +24,7 @@ namespace SktProject.Models
 
         public DateTime ProductionDate { get; set; }
 
-        public virtual Category Category { get; set; }
+        
 
 
         public virtual ApplicationUser User { get; set; }

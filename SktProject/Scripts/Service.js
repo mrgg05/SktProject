@@ -1,4 +1,16 @@
 ﻿
+
+
+app.service("myProductService", function ($http) {
+
+    this.getProducts = function () {
+        return $http.get("/Products/Index");
+    }
+
+
+
+})
+
 //Category Service
 app.service("myCatService", function ($http) {
 
@@ -17,25 +29,32 @@ app.service("myCatService", function ($http) {
 
     }
 
-})
+    this.DeleteCat = function (category) {
 
-//Product Service
-
-app.service("myProductService", function ($http) {
-
-    this.getProducts = function () {
-        return $http.get("/Products/Index");
-    }
-
-    this.AddProduct = function (product) {
         var response = $http({
             method: "POST",
-            url: "/Product/Create",
-            data: JSON.stringify(product),
+            url: "/Categories/Delete",
+            data: JSON.stringify(category),
             dataType: "json"
         })
         return response;
-
+        
     }
+
+})
+
+//home service
+
+appUser.service("myHomeService", function ($http) {
+
+    this.getDatas = function () {
+        return $http.get("/Home/Index1");
+    }
+
+    this.getDataCat = function () {
+        return $http.get("/Home/Index2");
+    }
+
+
 
 })

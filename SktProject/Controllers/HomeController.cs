@@ -1,4 +1,6 @@
-﻿using System;
+﻿using SktProject.Models;
+using SktProject.Models.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,23 +10,49 @@ namespace SktProject.Controllers
 {
     public class HomeController : Controller
     {
+        ApplicationDbContext db = new ApplicationDbContext();
+
         public ActionResult Index()
         {
+            //return RedirectToAction("Index1", "Categories");
+
+
+
             return View();
         }
 
-        public ActionResult Admin()
+
+        [HttpGet]
+        public JsonResult Index1()
         {
-            ViewBag.Message = "Your application description page.";
+            var result = (from p in db.Products
+                         select new IndexViewModels
+                         {
+                             SKT = p.SKT,
+                             Price = p.Price,
+                             ProductName = p.Title,
+                             ProductUrl = p.ProductUrl
+                         }).ToList();
+                       
 
-            return View();
+
+            return Json(result,JsonRequestBehavior.AllowGet);
         }
 
-        public ActionResult Contact()
+        [HttpGet]
+        public JsonResult Index2()
         {
-            ViewBag.Message = "Your contact page.";
+            var result = (from p in db.Categories
+                          select new 
+                          {
+                             p.CategoryName
+                          }).ToList();
 
-            return View();
+
+
+            return Json(result, JsonRequestBehavior.AllowGet);
         }
+
+      
     }
 }

@@ -7,6 +7,8 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using SktProject.Models;
+using System.IO;
+using System.Web.Helpers;
 
 namespace SktProject.Controllers
 {
@@ -23,7 +25,9 @@ namespace SktProject.Controllers
         [HttpGet]
         public JsonResult Index()
         {
-            var products = db.Products.Include(p => p.Category).ToList();
+           
+            var products = db.Products.ToList();
+           
 
             return Json(products,JsonRequestBehavior.AllowGet);
         }
@@ -54,19 +58,28 @@ namespace SktProject.Controllers
         // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
         // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
-       
-        public JsonResult Create(Product product)
+        [ValidateAntiForgeryToken]
+        public ActionResult Create(Product product,HttpPostedFileBase image)
         {
             if (ModelState.IsValid)
             {
+                WebImage img = new WebImage(image.InputStream);
+                FileInfo fotoinfo = new FileInfo(image.FileName);
+                string newfoto = Guid.NewGuid().ToString()+ fotoinfo.Extension;
+                img.Resize(500, 775);
+                img.Save("../Uploads/Photo/" + newfoto);
+                product.ProductUrl = "../Uploads/Photo/" + newfoto;
+                
                 db.Products.Add(product);
                 db.SaveChanges();
                
             }
 
             ViewBag.CategoryId = new SelectList(db.Categories, "CategoryId", "CategoryName", product.CategoryId);
-            return Json(product);
+            return View();
         }
+
+     
 
         // GET: Products/Edit/5
         public ActionResult Edit(int? id)

@@ -93,18 +93,16 @@ namespace SktProject.Controllers
         }
 
         // GET: Categories/Delete/5
-        public ActionResult Delete(int? id)
+        [HttpPost]
+        public JsonResult Delete(Category category)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Category category = db.Categories.Find(id);
-            if (category == null)
-            {
-                return HttpNotFound();
-            }
-            return View(category);
+           
+           
+
+           var silinen= db.Categories.Remove(category);
+            db.SaveChanges();
+           
+            return Json(silinen);
         }
 
         // POST: Categories/Delete/5

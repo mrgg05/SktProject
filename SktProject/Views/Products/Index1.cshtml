@@ -1,100 +1,73 @@
 ﻿
 
-
-
 <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.7/angular.min.js"></script>
 <script src="~/Scripts/Module.js"></script>
 <script src="~/Scripts/Controller.js"></script>
-
 <script src="~/Scripts/Service.js"></script>
 
 <div ng-app="myAdmin" ng-controller="myProductCtrl" ng-init="getAllProducts()">
-
-    <div ng-show="addProduct" style="padding-top:100px">
-        <table>
-            <tr>
-                <th>ProductTitle</th>
-                <th>
-                    <input type="text" ng-model="ProductTitle" />
-                </th>
-            </tr>
-            <tr>
-                <th>Category</th>
-                <th>
-                    <input type="text" ng-model="categoryId" />
-                </th>
-            </tr>
-            <tr>
-                <th>Price</th>
-                <th>
-                    <input type="text" ng-model="productPrice" />
-                </th>
-            </tr>
-            <tr>
-                <th>SKT</th>
-                <th>
-                    <input type="datetime" ng-model="productSkt" />
-                </th>
-            </tr>
-            <tr>
-                <th>TETT</th>
-                <th>
-                    <input type="datetime" ng-model="productTett" />
-                </th>
-            </tr>
-            <tr>
-                <th>Production Date</th>
-                <th>
-                    <input type="datetime" ng-model="productionDate" />
-                </th>
-            </tr>
-            @*<tr>
-                <th>Resim</th>
-                <th>
-                    <input type="file" ng-model="productUrl" />
-                    <input type="file" name="image" onchange="angular.element(this).scope().uploadedFile(this);" class="form-control" required>
-
-                    <p ng-show="myform.image.$invalid && !myform.image.$pristine" class="help-block">Image/File is required.</p>
-                </th>
-            </tr>*@
-
-            <tr>
-                <td colspan="2"><input type="button" ng-click="addProduct()" class="btn btn-success" value="Kaydet" /></td>
-
-            </tr>
-
-        </table>
-
-      
-
-    </div>
-
+  
     <table class="table">
         <tr>
-            <th>ProductTitle</th>
+            <th>Title</th>
             <th>Category</th>
             <th>Price</th>
             <th>SKT</th>
             <th>TETT</th>
-            <th>Production Date</th>
-            <th>Resim</th>
+            <th>ProductionDate</th>
+            <th>ProductUrl</th>
         </tr>
         <tr ng-repeat="x in product">
-            <td ng-bind="x.Title"></td>
-            <td ng-bind="x.CategoryId"></td>
-            <td ng-bind="x.Price"></td>
-            <td ng-bind="x.SKT"></td>
-            <td ng-bind="x.TETT"></td>
-            <td ng-bind="x.ProductionDate"></td>
-            <td ng-bind="x.ProductUrl"></td>
+            <td>{{x.Title}}</td>
+            <td>{{x.CategoryId}}</td>
+            <td >{{x.Price}}</td>
+            <td ng-model="date(x.SKT)">{{sonuc}}</td>
+          
+            <td ng-model="date(x.TETT)">{{sonuc}}</td>
+            <td ng-model="date(x.ProductionDate)">{{sonuc}}</td>
 
+            <td> <img style="width:75px" src="{{x.ProductUrl}}" /></td>
             <td>
                 <span ng-click="editEmployee(x)" class="btn btn-default">Edit</span>
                 <span ng-click="DeleteE(x)" class="btn btn-default">Delete</span>
             </td>
         </tr>
     </table>
-
-    <input type="button" class="btn btn-success" value="Product Add" ng-click="Divac()" />
-
+    
 </div>
+
+@*<script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.7.7/angular.min.js"></script>
+        <script src="~/Scripts/Module.js"></script>
+        <script src="~/Scripts/Controller.js"></script>
+        <script src="~/Scripts/Service.js"></script>
+
+
+    <div data-ng-app="myAdminn" data-ng-controller="myProductCtrl" data-ng-init="getAllProducts()">
+
+
+        <table class="table">
+            <tr>
+                <th>Title</th>
+                <th>Category</th>
+                <th>Price</th>
+                <th>SKT</th>
+                <th>TETT</th>
+                <th>ProductionDate</th>
+                <th>ProductUrl</th>
+            </tr>
+            <tr data-ng-repeat="item in product">
+                <td data-ng-bind="item.Title"></td>
+                <td data-ng-bind="item.Category"></td>
+                <td data-ng-bind="item.Price"></td>
+                <td data-ng-bind="item.SKT"></td>
+                <td data-ng-bind="item.TETT"></td>
+                <td data-ng-bind="item.ProductionDate"></td>
+                <td > <img style="width:75px;height:75px" data-ng-src="item.ProductUrl"/></td>
+
+
+            </tr>
+        </table>
+
+
+
+    </div>*@
