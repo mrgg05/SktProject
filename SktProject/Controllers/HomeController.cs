@@ -28,6 +28,7 @@ namespace SktProject.Controllers
             var result = (from p in db.Products
                          select new IndexViewModels
                          {
+                             ProductId=p.ProductId,
                              SKT = p.SKT,
                              Price = p.Price,
                              ProductName = p.Title,

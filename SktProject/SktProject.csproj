@@ -189,6 +189,7 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
+    <Compile Include="Controllers\ShoppingCartController.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -231,6 +232,9 @@
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\ShoppingCart.cs" />
     <Compile Include="Models\ViewModel\IndexViewModels.cs" />
+    <Compile Include="Models\ViewModel\ProductsViewModels.cs" />
+    <Compile Include="Models\ViewModel\ShoppingCartRemoveViewModels.cs" />
+    <Compile Include="Models\ViewModel\ShoppingCartViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -2087,6 +2091,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\ShoppingCart\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

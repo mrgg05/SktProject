@@ -40,13 +40,14 @@
                                 <tr role="row" class="even" ng-repeat="x in product">
                                     <td class="sorting_1">{{x.Title}}</td>
                                     <td>{{x.CategoryId}}</td>
-                                    <td>{{x.Price}}</td>
+                                    <td>{{x.Price}} TL</td>
                                     <td ng-model="date(x.SKT)">{{sonuc}}</td>
 
                                     <td ng-model="date(x.TETT)">{{sonuc}}</td>
                                     <td ng-model="date(x.ProductionDate)">{{sonuc}}</td>
 
                                     <td> <img style="width:75px" src="{{x.ProductUrl}}" /></td>
+                                    <td><input ng-click="deleteProduct(x)" type="button" class="btn btn-danger" value="Delete"/></td>
                                 </tr>
                             </tbody>
                         </table>
@@ -61,12 +62,11 @@
 <!-- Core plugin JavaScript-->
 <!-- Custom scripts for all pages-->
 <!-- Page level plugins -->
-<script src="~/Scripts/admin/vendor/datatables/jquery.dataTables.min.js"></script>
+@*<script src="~/Scripts/admin/vendor/datatables/jquery.dataTables.min.js"></script>
 <link href="~/Scripts/admin/vendor/datatables/dataTables.bootstrap4.min.css" rel="stylesheet" />
 
 
-<!-- Page level custom scripts -->
-<script src="~/Scripts/admin/demo/datatables-demo.js"></script>
+<script src="~/Scripts/admin/demo/datatables-demo.js"></script>*@
 
 
 

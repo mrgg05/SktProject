@@ -7,6 +7,13 @@ app.service("myProductService", function ($http) {
         return $http.get("/Products/Index");
     }
 
+    this.deleteProduct = function (product) {
+
+        var response = $http.post('/Products/Delete', product);
+
+        console.log(response);
+    }
+
 
 
 })

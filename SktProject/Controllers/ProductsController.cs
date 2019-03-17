@@ -9,6 +9,7 @@ using System.Web.Mvc;
 using SktProject.Models;
 using System.IO;
 using System.Web.Helpers;
+using SktProject.Models.ViewModel;
 
 namespace SktProject.Controllers
 {
@@ -26,7 +27,19 @@ namespace SktProject.Controllers
         public JsonResult Index()
         {
            
-            var products = db.Products.ToList();
+            var products = (from p in db.Products
+                           join c in db.Categories on p.CategoryId equals c.CategoryId
+                           select new ProductsViewModels {
+
+                               CategoryId=c.CategoryName,
+                               Price=p.Price,
+                               SKT=p.SKT,
+                               ProductId=p.ProductId,
+                               ProductionDate=p.ProductionDate,
+                               ProductUrl=p.ProductUrl,
+                               TETT=p.TETT,
+                               Title=p.Title
+                           }).ToList();
            
 
             return Json(products,JsonRequestBehavior.AllowGet);
@@ -114,19 +127,14 @@ namespace SktProject.Controllers
             return View(product);
         }
 
+        [HttpPost]
         // GET: Products/Delete/5
-        public ActionResult Delete(int? id)
+        public JsonResult Delete(Product product)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Product product = db.Products.Find(id);
-            if (product == null)
-            {
-                return HttpNotFound();
-            }
-            return View(product);
+            
+            var products = db.Products.Remove(product);
+            
+            return Json(products);
         }
 
         // POST: Products/Delete/5
