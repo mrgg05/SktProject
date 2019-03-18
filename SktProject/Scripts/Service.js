@@ -52,16 +52,16 @@ app.service("myCatService", function ($http) {
 
 //home service
 
-appUser.service("myHomeService", function ($http) {
+//appUser.service("myHomeService", function ($http) {
 
-    this.getDatas = function () {
-        return $http.get("/Home/Index1");
-    }
+//    this.getDatas = function () {
+//        return $http.get("/Home/IndexProduct");
+//    }
 
-    this.getDataCat = function () {
-        return $http.get("/Home/Index2");
-    }
+//    this.getDataCats = function () {
+//        return $http.get("IndexCat");
+//    }
 
 
 
-})
+//})

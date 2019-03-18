@@ -23,7 +23,7 @@ namespace SktProject.Controllers
 
 
         [HttpGet]
-        public JsonResult Index1()
+        public JsonResult IndexProduct()
         {
             var result = (from p in db.Products
                          select new IndexViewModels
@@ -41,14 +41,15 @@ namespace SktProject.Controllers
         }
 
         [HttpGet]
-        public JsonResult Index2()
+        public JsonResult IndexCat()
         {
             var result = (from p in db.Categories
-                          select new 
+                          select new CategoriesViewModels
                           {
-                             p.CategoryName
+                              CategoryId = p.CategoryId,
+                              CategoryName = p.CategoryName
                           }).ToList();
-
+                         
 
 
             return Json(result, JsonRequestBehavior.AllowGet);

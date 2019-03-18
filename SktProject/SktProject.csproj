@@ -231,6 +231,7 @@
     <Compile Include="Models\OrderDetails.cs" />
     <Compile Include="Models\Product.cs" />
     <Compile Include="Models\ShoppingCart.cs" />
+    <Compile Include="Models\ViewModel\CategoriesViewModels.cs" />
     <Compile Include="Models\ViewModel\IndexViewModels.cs" />
     <Compile Include="Models\ViewModel\ProductsViewModels.cs" />
     <Compile Include="Models\ViewModel\ShoppingCartRemoveViewModels.cs" />
@@ -1844,6 +1845,7 @@
     <Content Include="Scripts\admin\vendor\jquery\jquery.min.js" />
     <Content Include="Scripts\admin\vendor\jquery\jquery.slim.js" />
     <Content Include="Scripts\admin\vendor\jquery\jquery.slim.min.js" />
+    <Content Include="Scripts\angular.min.js" />
     <Content Include="Scripts\bootstrap.bundle.js" />
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="favicon.ico" />
@@ -2021,6 +2023,7 @@
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\boxOver.js" />
     <Content Include="Scripts\Controller.js" />
+    <Content Include="Scripts\ControllerHome.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
     <Content Include="Scripts\jquery-3.3.1.slim.js" />
@@ -2034,7 +2037,9 @@
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="Scripts\Module.js" />
+    <Content Include="Scripts\ModuleHome.js" />
     <Content Include="Scripts\Service.js" />
+    <Content Include="Scripts\ServiceHome.js" />
     <Content Include="Uploads\Photo\0.jpg" />
     <Content Include="Uploads\Photo\51b83a0c-0352-4ada-9f86-be3b0a19ad86.jpeg" />
     <Content Include="Uploads\Photo\6467aded-7f95-4d26-904f-603fa77f0b64.jpg" />
