@@ -24,6 +24,17 @@ namespace SktProject.Controllers
             return View(db.Products.ToList());
         }
 
+        [HttpPost]
+        // GET: Products/Delete/5
+        public JsonResult Delete(int id)
+        {
+            Product proc = db.Products.Find(id);
+            var products = db.Products.Remove(proc);
+            db.SaveChanges();
+
+            return Json(products);
+        }
+
 
 
         public ActionResult ProductAdd()
@@ -31,7 +42,6 @@ namespace SktProject.Controllers
             ViewBag.CategoryId = new SelectList(db.Categories, "CategoryId", "CategoryName");
             return View();
         }
-
 
         [HttpPost]
         [ValidateAntiForgeryToken]

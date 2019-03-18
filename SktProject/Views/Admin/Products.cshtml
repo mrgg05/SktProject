@@ -47,7 +47,7 @@
                                     <td ng-model="date(x.ProductionDate)">{{sonuc}}</td>
 
                                     <td> <img style="width:75px" src="{{x.ProductUrl}}" /></td>
-                                    <td><input ng-click="deleteProduct(x)" type="button" class="btn btn-danger" value="Delete"/></td>
+                                    <td><input ng-click="delProduct(x.ProductId)" type="button" class="btn btn-danger" value="Delete"/></td>
                                 </tr>
                             </tbody>
                         </table>

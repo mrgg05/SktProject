@@ -26,7 +26,7 @@ app.controller("myProductCtrl", function ($scope, myProductService) {
         //var nowDate = new Date(parseInt(date.substr(6)));
         //var result = "";
         //result = nowDate.format("dd/mm/yyyy") + " : dd/mm/yyyy";
-        console.log(veri)
+       
         var completedDate = new Date(parseInt(veri.replace("/Date(", "").replace(")/")));
         var dd = completedDate.getDate();
         var mm = completedDate.getMonth() + 1; //January is 0! 
@@ -35,22 +35,22 @@ app.controller("myProductCtrl", function ($scope, myProductService) {
         if (mm < 10) { mm = '0' + mm }
         //var date = new Date(parseInt(skt.substr(6)));
         var datee = dd + "." + mm + "." + yyyy;
-        console.log(datee)
+      
         $scope.sonuc = datee;
 
     }
 
 
-    $scope.deleteProduct = function (product) {
+    $scope.delProduct = function (productId) {
 
-        console.log(product)
+      
 
-        var delProduct = myProductService.deleteProduct(product).then(function (msg) {
+        var getData = myProductService.deleteProduct(productId);
 
-            alert("Deleted");
-            console.log(delProduct)
-        });
-        Location.reload();
+          
+        console.log(getData);
+        
+        location.reload();
 
     }
 });
