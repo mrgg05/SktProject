@@ -26,13 +26,16 @@ namespace SktProject.Controllers
 
         [HttpPost]
         // GET: Products/Delete/5
-        public JsonResult Delete(int id)
+        public JsonResult Delete(string  id)
         {
-            Product proc = db.Products.Find(id);
-            var products = db.Products.Remove(proc);
+            int no = Convert.ToInt32(id);
+            var productlist = db.Products.Where(x => x.ProductId == no).FirstOrDefault();
+            db.Products.Remove(productlist);
             db.SaveChanges();
 
-            return Json(products);
+          
+
+            return Json(productlist);
         }
 
 
@@ -58,7 +61,7 @@ namespace SktProject.Controllers
 
                 db.Products.Add(product);
                 db.SaveChanges();
-
+                return RedirectToAction("Products", "Admin");
             }
 
             ViewBag.CategoryId = new SelectList(db.Categories, "CategoryId", "CategoryName", product.CategoryId);

@@ -9,6 +9,8 @@
 <script src="~/Scripts/Module.js"></script>
 <script src="~/Scripts/Controller.js"></script>
 <script src="~/Scripts/Service.js"></script>
+
+
 <link href="~/Scripts/admin/vendor/fontawesome-free/css/all.min.css" rel="stylesheet" type="text/css">
 <link href="https://fonts.googleapis.com/css?family=Nunito:200,200i,300,300i,400,400i,600,600i,700,700i,800,800i,900,900i" rel="stylesheet">
 
@@ -41,12 +43,12 @@
                                     <td class="sorting_1">{{x.Title}}</td>
                                     <td>{{x.CategoryId}}</td>
                                     <td>{{x.Price}} TL</td>
-                                    <td ng-model="date(x.SKT)">{{sonuc}}</td>
+                                    <td><span ng-model="date(x.SKT)">{{sonuc}}</span></td>
 
-                                    <td ng-model="date(x.TETT)">{{sonuc}}</td>
-                                    <td ng-model="date(x.ProductionDate)">{{sonuc}}</td>
+                                    <td><span ng-model="date(x.TETT)">{{sonuc}}</span></td>
+                                    <td><span ng-model="date(x.ProductionDate)">{{sonuc}}</span></td>
 
-                                    <td> <img style="width:75px" src="{{x.ProductUrl}}" /></td>
+                                    <td> <img style="width:75px" ng-src="{{x.ProductUrl}}" /></td>
                                     <td><input ng-click="delProduct(x.ProductId)" type="button" class="btn btn-danger" value="Delete"/></td>
                                 </tr>
                             </tbody>

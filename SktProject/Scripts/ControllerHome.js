@@ -1,5 +1,48 @@
 ﻿appHome.controller("myhomeCtrl", function ($scope, myhomeService) {
 
+
+    $scope.selectCategory = function (cat) {
+
+        var datacategory = myhomeService.selectCat(cat);
+        console.log(cat);
+
+        datacategory.then(function (product) {
+            $scope.alldata = product.data;
+        }, function () {
+            alert("veriler getirilemedi")
+        })
+
+        //datacategory.then(function (msg) {
+       
+         
+        //    })
+    }
+
+    //function GetAllEmp() {
+    //    var getData = myService.getEmployees();
+
+    //    getData.then(function (employe) {
+    //        $scope.employee = employe.data;
+    //    }, function () {
+    //        alert("veriler getirilemedi")
+    //    })
+    //}
+
+
+    $scope.chooseCat = function () {
+        //yukardaki gibi yaz bunun fonksiyonunu.
+        getAllData();
+
+        if (selectCategory() ==null) {
+            getAllData(); 
+        }
+        else {
+            selectCategory();
+        }
+
+
+    }
+
     $scope.gethomeCat = function () {
 
         var datacategory = myhomeService.gethomeCategories();

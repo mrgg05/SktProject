@@ -119,11 +119,15 @@
             <div class="crumb_navigation"> Navigation: <span class="current">Home</span> </div>
             <div class="left_content">
                 <div class="title_box" ng-init="gethomeCat()">Categories</div>
-                <ul class="left_menu" ng-repeat="y in homecategories" >
-                 
-                    <li class="even"><a ng-click="">{{y.CategoryName}}</a></li>
-                
+                <ul class="left_menu" ng-repeat="y in homecategories">
+
+                    <li class="even"><input type="button" class="btn btn-default" ng-click="selectCategory(y)" value="{{y.CategoryName}}" /></li>
+               
+
                 </ul>
+      
+
+
                 <div class="title_box">Special Products</div>
                 <div class="border_box">
                     <div class="product_title"><a href="#">Makita 156 MX-VL</a></div>
@@ -147,8 +151,8 @@
                         <a href="#" class="prod_buy">details</a>
                     </div>
                 </div>
-                <div class="center_title_bar"  ng-init="getAllData()">Products</div>
-                <div class="prod_box" ng-repeat="x in alldata">
+                <div class="center_title_bar"  ng-init="getAllData() || selectCategory()">Products</div>
+                <div class="prod_box"  ng-repeat="x in alldata">
                     <div class="center_prod_box">
                         <div class="product_title"><a href="#">{{x.ProductName}}</a></div>
                         <div class="product_img"><a href="#"><img width="100" height="100" src="{{x.ProductUrl}}" alt="" border="0" /></a></div>

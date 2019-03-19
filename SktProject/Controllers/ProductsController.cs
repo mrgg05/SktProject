@@ -89,7 +89,7 @@ namespace SktProject.Controllers
             }
 
             ViewBag.CategoryId = new SelectList(db.Categories, "CategoryId", "CategoryName", product.CategoryId);
-            return View();
+            return RedirectToAction("Products", "Admin");
         }
 
      

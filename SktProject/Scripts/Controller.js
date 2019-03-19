@@ -13,7 +13,7 @@ app.controller("myProductCtrl", function ($scope, myProductService) {
         getData.then(function (product) {
             console.log(product)
             $scope.product = product.data;
-            console.log(new Date(parseInt(product.SKT.substr(6))))
+            //console.log(new Date(parseInt(product.SKT.substr(6))))
         }, function () {
             alert("veriler getirilemedi")
         })
@@ -26,7 +26,13 @@ app.controller("myProductCtrl", function ($scope, myProductService) {
         //var nowDate = new Date(parseInt(date.substr(6)));
         //var result = "";
         //result = nowDate.format("dd/mm/yyyy") + " : dd/mm/yyyy";
-       
+        //var options = {
+        //    month: "short",
+        //    day: "2-digit",
+        //    year: "numeric"
+        //};
+
+        //var date = new Date(veri).toLocaleString("en-us", options);
         var completedDate = new Date(parseInt(veri.replace("/Date(", "").replace(")/")));
         var dd = completedDate.getDate();
         var mm = completedDate.getMonth() + 1; //January is 0! 
@@ -36,22 +42,18 @@ app.controller("myProductCtrl", function ($scope, myProductService) {
         //var date = new Date(parseInt(skt.substr(6)));
         var datee = dd + "." + mm + "." + yyyy;
       
-        $scope.sonuc = datee;
+       $scope.sonuc = datee;
 
     }
 
 
-    $scope.delProduct = function (productId) {
-
-      
-
-        var getData = myProductService.deleteProduct(productId);
-
-          
-        console.log(getData);
-        
-        location.reload();
-
+    $scope.delProduct = function (product) {
+        var getData = myProductService.deleteProduct(product);
+        getData.then(function (msg) {
+            //getAllProducts();
+            alert("Product Deleted");
+            location.reload();
+        })
     }
 });
 

@@ -7,19 +7,16 @@ app.service("myProductService", function ($http) {
         return $http.get("/Products/Index");
     }
 
-    this.deleteProduct = function (id) {
+    this.deleteProduct = function (product) {
 
-        var response = $http.post({
+        var response = $http({
             method: "POST",
             url: "/Admin/Delete/",
-            data: JSON.stringify(id), // or JSON.stringify ({name: 'jonas'}),
-        
-            contentType: "application/json",
+            params: {
+                id: JSON.stringify(product)
+            },
             dataType: "json"
-           
-          
         });
-
         console.log(response);
         return response;
     }
