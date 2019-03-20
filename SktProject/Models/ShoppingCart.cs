@@ -89,6 +89,7 @@ namespace SktProject.Models
         }
         public List<Cart> GetCartItems()
         {
+
             return shopdb.Carts.Where(
                 cart => cart.CartId == ShoppingCartId).ToList();
         }

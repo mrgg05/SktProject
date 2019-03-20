@@ -28,18 +28,21 @@
     //    })
     //}
 
+    function getAllData() {
+        var getData = myhomeService.getDatas();
+        console.log(getData)
+        getData.then(function (product) {
+            $scope.alldata = product.data;
+        }, function () {
+            alert("veriler getirilemedi")
+        })
+    }
+
 
     $scope.chooseCat = function () {
         //yukardaki gibi yaz bunun fonksiyonunu.
         getAllData();
-
-        if (selectCategory() ==null) {
-            getAllData(); 
-        }
-        else {
             selectCategory();
-        }
-
 
     }
 
@@ -57,16 +60,16 @@
     }
 
 
-    $scope.getAllData = function () {
+    //$scope.getAllData = function () {
 
-        var getData = myhomeService.getDatas();
-        console.log(getData)
-        getData.then(function (product) {
-            $scope.alldata = product.data;
-        }, function () {
-            alert("veriler getirilemedi")
-        })
-    }
+    //    var getData = myhomeService.getDatas();
+    //    console.log(getData)
+    //    getData.then(function (product) {
+    //        $scope.alldata = product.data;
+    //    }, function () {
+    //        alert("veriler getirilemedi")
+    //    })
+    //}
 
         $scope.date = function (veri) {
         console.log(veri)

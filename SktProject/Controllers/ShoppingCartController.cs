@@ -13,24 +13,29 @@ namespace SktProject.Controllers
         // GET: ShoppingCart
         ApplicationDbContext db = new ApplicationDbContext();
         // GET: ShoppingCart
-        public ActionResult Index()
+
+            [HttpGet]
+        public JsonResult Index()
         {
             var cart = ShoppingCart.GetCart(this.HttpContext);
             var cartviewModel = new ShoppingCartViewModels
             {
-                CartItems = cart.GetCartItems(),
-                CartTotal = cart.GetTotal()
+             
+               //Title=cart.GetCartItems().
+               // CartTotal = cart.GetTotal()
             };
-            return View(cartviewModel);
+            return Json(cartviewModel,JsonRequestBehavior.AllowGet);
         }
 
-        public ActionResult AddToCart(int id)
+        [HttpPost]
+        public JsonResult AddToCart(Product product)
         {
+            int id = Convert.ToInt32(product.ProductId);
             var eklenen = db.Products.FirstOrDefault(x => x.ProductId == id);
             var cart = ShoppingCart.GetCart(this.HttpContext);
             cart.AddToCart(eklenen);
 
-            return RedirectToAction("Index");
+            return Json(eklenen);
 
         }
 

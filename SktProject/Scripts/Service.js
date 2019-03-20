@@ -58,7 +58,45 @@ app.service("myCatService", function ($http) {
 })
 
 //home service
+appHome.service("myhomeService", function ($http) {
 
+    this.shopCartAdd = function (product) {
+        var response = $http({
+            method: "POST",
+            url: "/ShoppingCart/AddToCart/",
+            params: product,
+            dataType: "json"
+        });
+        console.log(response);
+        return response;
+    }
+
+    this.getShopCart = function () {
+        return $http.get("/ShoppingCart/Index");
+    }
+    
+
+    this.gethomeCategories = function () {
+        return $http.get("/Home/IndexCat");
+    }
+
+    this.getDatas = function () {
+        return $http.get("/Home/IndexProduct");
+    }
+
+    this.selectCat = function (cat) {
+
+        var response = $http({
+            method: "POST",
+            url: "/Home/GetCatProduct/",
+            params: cat,
+            dataType: "json"
+        });
+        console.log(response);
+        return response;
+    }
+
+});
 //appUser.service("myHomeService", function ($http) {
 
 //    this.getDatas = function () {
