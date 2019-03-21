@@ -20,11 +20,23 @@ namespace SktProject.Controllers
             var cart = ShoppingCart.GetCart(this.HttpContext);
             var cartviewModel = new ShoppingCartViewModels
             {
-             
-               //Title=cart.GetCartItems().
-               // CartTotal = cart.GetTotal()
+                CartItems = cart.GetCartItems(),
+                CartTotal = cart.GetTotal()
             };
-            return Json(cartviewModel,JsonRequestBehavior.AllowGet);
+
+
+
+            return Json(cartviewModel, JsonRequestBehavior.AllowGet);
+        }
+
+
+        [HttpGet]
+        public JsonResult CartTotal()
+        {
+            var cart = ShoppingCart.GetCart(this.HttpContext);
+
+            var shoptotal = cart.GetTotal();
+            return Json(shoptotal, JsonRequestBehavior.AllowGet);
         }
 
         [HttpPost]
@@ -39,8 +51,22 @@ namespace SktProject.Controllers
 
         }
 
-        public ActionResult RemoveToCart(int id)
+
+        public JsonResult ClearCart()
         {
+            var cart = ShoppingCart.GetCart(this.HttpContext);
+
+            cart.EmptyCart();
+
+
+            return Json(cart, JsonRequestBehavior.AllowGet);
+        }
+
+
+        [HttpPost]
+        public JsonResult RemoveToCart(Cart cartt)
+        {
+            int id = Convert.ToInt32(cartt.RecordId);
             var cart = ShoppingCart.GetCart(this.HttpContext);
             string itemname = db.Carts.FirstOrDefault(x => x.RecordId == id).Product.Title;
 

@@ -60,6 +60,22 @@ app.service("myCatService", function ($http) {
 //home service
 appHome.service("myhomeService", function ($http) {
 
+    this.clearCart = function () {
+        return $http.get("/ShoppingCart/ClearCart");
+    }
+
+    this.shopCartDelete = function (cartdata) {
+        var response = $http({
+            method: "POST",
+            url: "/ShoppingCart/RemoveToCart/",
+            params: cartdata,
+            dataType: "json"
+        });
+        console.log(response);
+        return response;
+    }
+
+
     this.shopCartAdd = function (product) {
         var response = $http({
             method: "POST",
@@ -73,6 +89,10 @@ appHome.service("myhomeService", function ($http) {
 
     this.getShopCart = function () {
         return $http.get("/ShoppingCart/Index");
+    }
+
+    this.getShopTotal = function () {
+        return $http.get("/ShoppingCart/CartTotal");
     }
     
 

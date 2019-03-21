@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SktProject.Models.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -87,9 +88,10 @@ namespace SktProject.Models
             // Save changes
             shopdb.SaveChanges();
         }
+
+
         public List<Cart> GetCartItems()
         {
-
             return shopdb.Carts.Where(
                 cart => cart.CartId == ShoppingCartId).ToList();
         }

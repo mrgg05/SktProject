@@ -129,24 +129,50 @@ appHome.controller("myhomeCtrl", function ($scope, myhomeService) {
         //    })
     }
 
+
+
+    $scope.removeItem = function (shopItem) {
+
+        var datacart = myhomeService.shopCartDelete(shopItem);
+
+        datacart.then(function (msg) {
+            
+        })
+
+    }
+
+    $scope.cartTotal = function () {
+
+        var totalcart = myhomeService.getShopTotal();
+
+        totalcart.then(function(total){
+            $scope.shopcartTotal = total.data;
+        })
+    }
+
+
+
+
     $scope.cart = function () {
 
         var shopdata = myhomeService.getShopCart();
 
-        var ShopView = {
-            Title: shopdata.CartItems.Product.Title,
-            Price: shopdata.CartItems.Product.Price,
-            GetTotal: shopdata.CartTotal
-        }
+        //var ShopView = {
+        //    Title: shopdata.CartItems.Product.Title,
+        //    Price: shopdata.CartItems.Product.Price,
+        //    GetTotal: shopdata.CartTotal
+        //}
 
-        console.log(ShowView)
+        console.log(shopdata)
 
         shopdata.then(function (datashop) {
             $scope.shopcartdata = datashop.data;
-           
 
+            console.log($scope.shopcartdata);
         })
     }
+
+    $scope.emptyCart = [];
 
     $scope.addItem = function (product) {
 
@@ -155,12 +181,14 @@ appHome.controller("myhomeCtrl", function ($scope, myhomeService) {
 
         var shopdata = myhomeService.shopCartAdd(product);
 
-        //$scope.cart.push(angular.copy(Product));
+        //location.reload();
+        $scope.emptyCart.push(angular.copy(product));
 
     }
 
     $scope.clearCart = function () {
-        $scope.cart.length = 0;
+        var clearData = myhomeService.clearCart();
+
     };
 
 
@@ -190,7 +218,7 @@ appHome.controller("myhomeCtrl", function ($scope, myhomeService) {
     $scope.chooseCat = function () {
         //yukardaki gibi yaz bunun fonksiyonunu.
         getAllData();
-        selectCategory();
+        $scope.selectCategory();
 
     }
 
