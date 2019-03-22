@@ -12,6 +12,23 @@ namespace SktProject.Controllers
     {
         ApplicationDbContext db = new ApplicationDbContext();
 
+        public ActionResult Index1()
+        {
+            //return RedirectToAction("Index1", "Categories");
+
+
+
+            return View();
+        }
+
+        public ActionResult Login()
+        {
+            //return RedirectToAction("Index1", "Categories");
+
+
+
+            return View();
+        }
         public ActionResult Index()
         {
             //return RedirectToAction("Index1", "Categories");
